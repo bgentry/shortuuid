@@ -4,7 +4,7 @@ require 'radix'
 module ShortUUID
   def self.shorten(uuid, alphabet = Radix::BASE::B62)
     return nil unless uuid && !uuid.empty?
-    uuid.split('-').join.to_i(16).b(10).to_s(alphabet)
+    uuid.delete('-').to_i(16).b(10).to_s(alphabet)
   end
 
   def self.expand(short_uuid, alphabet = Radix::BASE::B62)
